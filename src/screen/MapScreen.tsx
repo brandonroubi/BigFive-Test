@@ -195,6 +195,7 @@ const useMapScreen = (props:any) => {
         loadPartnersPlaces,
         showfindplacesbtn,
         processingUserLocation,
+        onPlaceSearch,
     }
 }
 

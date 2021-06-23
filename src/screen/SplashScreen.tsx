@@ -33,8 +33,8 @@ const SplashScreen = () => {
                 barStyle="light-content"
                 backgroundColor="#4F6D7A"
             />
-            <Text style={styles.welcome}> WELCOME BIG FIVE TEAM!</Text>
-            <Text style={styles.instructions}>DEVELOP BY IBRAHIM SIRIPE</Text>
+            <Text style={styles.welcome}> WELCOME BIG FIVE TEAM !</Text>
+            <Text style={styles.instructions}>APP MOBILE DEVELOP BY IBRAHIM SIRIPE</Text>
         </View>
     );
 }

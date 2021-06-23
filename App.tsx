@@ -6,12 +6,13 @@ import SignInScreen from "./src/screen/SignInScreen";
 import StyleAppContext, {styleApp, styleScreenHeader} from './src/styles/StyleAppContext';
 import AppContext, {appStore} from './AppContext';
 // @ts-ignore
-import {APP_STOREKEY_USERPROFILE, APP_SCREEN_SIGNUP, APP_SCREEN_SIGNIN, APP_SCREEN_MAP} from "@env";
+import {APP_STOREKEY_USERPROFILE, APP_SCREEN_SIGNUP, APP_SCREEN_SIGNIN, APP_SCREEN_MAP, APP_SCREEN_SPLASH} from "@env";
 import SplashScreen from "./src/screen/SplashScreen";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {useEffect, useState} from "react";
 import * as React from "react";
 import BluePrintheme from "./src/styles/themes/BluePrint";
+import {sleepUtils} from "./src/utilities/Utils";
 
 
 const Stack = createStackNavigator();
@@ -21,11 +22,14 @@ const stylescreenheader : any = styleScreenHeader(BluePrintheme);
 const App = () => {
     const appstore : any = appStore();
     const [initialRouteName, setInitialRouteName]   = useState<string|undefined>(undefined);
+
     useEffect(() => {
-        appstore.getData(APP_STOREKEY_USERPROFILE).then(value=>{
-            appstore.setUserProfile(value);
-            setInitialRouteName(APP_SCREEN_MAP) ;
-        }).catch(e=>setInitialRouteName(APP_SCREEN_SIGNUP));
+        sleepUtils(7000).then(()=>{
+            appstore.getData(APP_STOREKEY_USERPROFILE).then(value=>{
+                appstore.setUserProfile(value);
+                setInitialRouteName(APP_SCREEN_MAP);
+            }).catch(e=>setInitialRouteName(APP_SCREEN_SIGNUP));
+        });
         return () => {}
     }, [])
 
